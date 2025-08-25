@@ -78,6 +78,13 @@ def page_rank(G, scale=1):
     return G
 
 
+def update_readme():
+    from datetime import datetime
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    readme_path = "README.MD"
+    with open(readme_path, "a") as f:
+        f.write(f"\n\n_Last updated: {current_date}_\n")
+
 dependencies = get_dependencies()
 G = build_graph(dependencies)
 print(len(G.nodes))
@@ -87,3 +94,4 @@ remove = [node for node, degree in G.degree() if degree < 1]
 G.remove_nodes_from(remove)
 print(len(G.nodes))
 nx.write_gexf(G, "graph.gexf")
+update_readme()
