@@ -1,3 +1,9 @@
+
+# We are not using this but the python version for now
+# because there is no working tool to save a graph as gexf with node attributes in Julia
+
+
+
 using Pkg.TOML
 using ProgressBars
 using Downloads
@@ -26,7 +32,7 @@ function get_dependencies(package::String)
 end
 
 function get_dependencies()
-    dependencies = Dict{String, Vector{String}}()
+    dependencies = Dict{String,Vector{String}}()
     for letter in ProgressBar('A':'Z')
         for package in readdir("General-master/$(letter)")
             if isdir("General-master/$(letter)/$(package)")
@@ -39,7 +45,7 @@ end
 
 
 function build_index(dependencies)
-    index = Dict{String, Int}()
+    index = Dict{String,Int}()
     for (i, pkg) in enumerate(keys(dependencies))
         index[pkg] = i
     end
