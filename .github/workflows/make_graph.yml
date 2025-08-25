@@ -1,4 +1,4 @@
-name: update-readme
+name: build_graph
 
 on:
   push:
@@ -22,12 +22,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install numpy networkx
       - name: Run the script
-        run: python make_graph.py
+        run: python build_graph.py
       - name: Commit and push
         run: |-
           git diff
           git config --global user.email "nicolasloizeau@gmail.com"
           git config --global user.name "nicolasloizeau"
           git add -A
-          git commit -m "make graph" || exit 0
+          git commit -m "build graph workflow" || exit 0
           git push
