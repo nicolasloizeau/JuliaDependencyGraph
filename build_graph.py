@@ -3,7 +3,6 @@ import os
 import tomllib
 from os import system
 import networkx as nx
-from tqdm import tqdm
 import string
 import numpy as np
 import random
@@ -40,7 +39,7 @@ def get_repo_package(package):
 
 def get_dependencies():
     dependencies = {}
-    for letter in tqdm(string.ascii_uppercase):
+    for letter in string.ascii_uppercase:
         letter_path = f"General-master/{letter}"
         if os.path.isdir(letter_path):
             for package in os.listdir(letter_path):
@@ -85,6 +84,7 @@ def update_readme():
     with open(readme_path, "a") as f:
         f.write(f"\n\n_Last updated: {current_date}_\n")
 
+download_registry()
 dependencies = get_dependencies()
 G = build_graph(dependencies)
 print(len(G.nodes))
