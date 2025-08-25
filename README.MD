@@ -1,6 +1,4 @@
 
-
-
 # [Julia Dependency Graph](https://nicolasloizeau.github.io/JuliaDependencyGraph/)
 Visualization of the dependency graph of Julia packages.
 

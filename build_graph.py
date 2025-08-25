@@ -12,7 +12,7 @@ def download_registry():
     response = requests.get(url)
     with open("registry.zip", "wb") as f:
         f.write(response.content)
-    system("unzip -o registry.zip -d .")
+    system("unzip -qq -o registry.zip -d .")
 
 
 def get_dependencies_package(package):
@@ -81,8 +81,16 @@ def update_readme():
     from datetime import datetime
     current_date = datetime.now().strftime("%Y-%m-%d")
     readme_path = "README.MD"
-    with open(readme_path, "a") as f:
-        f.write(f"\n\n_Last updated: {current_date}_\n")
+    current_date = datetime.now().strftime("%Y-%m-%d")
+    date_line = f"_Last updated: {current_date}_"
+    with open(readme_path, "r") as f:
+        lines = f.readlines()
+    if lines:
+        lines[-1] = date_line + "\n"
+    else:
+        lines = [date_line + "\n"]
+    with open(readme_path, "w") as f:
+        f.writelines(lines)
 
 download_registry()
 dependencies = get_dependencies()
