@@ -10,4 +10,4 @@ Visualization of the Julia packages co-contributors graph.
 Packages are nodes, edges are  common contributors.
 
 
-_Last updated: 2025-08-25_
+_Last updated: 2025-08-27_
